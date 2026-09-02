@@ -16,6 +16,7 @@
     --fondo-tarjeta: #f5f9f2;
     --texto: #214229;
     --borde: #d7e3d0;
+    --enfoque: var(--verde-oscuro);
     --fuente-titulo: 'Baloo 2', sans-serif;
     --fuente-texto: 'Inter', sans-serif;
   }
@@ -26,6 +27,7 @@
       --fondo-tarjeta: #1b2618;
       --texto: #eef5ea;
       --borde: #2c3b27;
+      --enfoque: var(--verde-brillante);
     }
   }
 
@@ -155,7 +157,7 @@
   }
 
   .chip:has(input:focus-visible) {
-    outline: 3px solid var(--verde-oscuro);
+    outline: 3px solid var(--enfoque);
     outline-offset: 2px;
   }
 
