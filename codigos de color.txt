@@ -1,0 +1,8 @@
+verde brillante HEX:  #56BE27
+RGB:  86 / 190 / 39
+
+verde oscuro HEX:  #214229
+RGB:  33 / 66 / 41
+
+amarillo HEX:  #FFEE00 aprox.
+RGB:  255 / 238 / 0
