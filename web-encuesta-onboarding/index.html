@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encuesta de Experiencia de Onboarding - Providencia S.A.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-brillante: #56BE27;
+    --verde-oscuro: #214229;
+    --amarillo: #FFEE00;
+    --fondo: #ffffff;
+    --fondo-tarjeta: #f5f9f2;
+    --texto: #214229;
+    --borde: #d7e3d0;
+    --fuente-titulo: 'Baloo 2', sans-serif;
+    --fuente-texto: 'Inter', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fondo: #12190f;
+      --fondo-tarjeta: #1b2618;
+      --texto: #eef5ea;
+      --borde: #2c3b27;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: var(--fuente-texto);
+    line-height: 1.5;
+  }
+
+  .contenedor {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 20px 64px;
+  }
+
+  .encabezado {
+    text-align: center;
+    padding: 32px 0 16px;
+  }
+
+  .logo-marca {
+    font-family: var(--fuente-titulo);
+    font-weight: 700;
+    color: var(--verde-brillante);
+    font-size: 1.8rem;
+    letter-spacing: 0.03em;
+    margin: 0 0 4px;
+  }
+
+  .logo-marca span {
+    display: block;
+    font-size: 1rem;
+    color: var(--texto);
+    font-weight: 600;
+  }
+
+  .encabezado h1 {
+    font-family: var(--fuente-titulo);
+    font-size: 1.5rem;
+    margin: 16px 0 12px;
+  }
+
+  .intro {
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+
+  .bloque {
+    background: var(--fondo-tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .bloque h2 {
+    font-family: var(--fuente-titulo);
+    font-size: 1.15rem;
+    color: var(--verde-oscuro);
+    margin-top: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .bloque h2 { color: var(--verde-brillante); }
+  }
+
+  .pregunta {
+    margin-bottom: 20px;
+  }
+
+  .pregunta label,
+  .pregunta-texto {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    font-family: var(--fuente-texto);
+    font-size: 1rem;
+    background: var(--fondo);
+    color: var(--texto);
+  }
+
+  textarea { resize: vertical; }
+
+  .escala {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--verde-brillante);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .chip input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .chip:has(input:checked) {
+    background: var(--verde-brillante);
+    color: #ffffff;
+  }
+
+  .escala-etiquetas {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    opacity: 0.75;
+    margin-top: 6px;
+  }
+
+  .boton-enviar {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: var(--verde-brillante);
+    color: #ffffff;
+    font-family: var(--fuente-titulo);
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .boton-enviar:hover { filter: brightness(0.95); }
+
+  .mensaje-estado {
+    text-align: center;
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--fondo-tarjeta);
+    border: 1px solid var(--borde);
+  }
+
+  .mensaje-error {
+    border-color: #c0392b;
+    color: #c0392b;
+  }
+
+  @media (max-width: 480px) {
+    .encabezado h1 { font-size: 1.25rem; }
+    .chip { width: 40px; height: 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+  <header class="encabezado">
+    <p class="logo-marca">PROVIDENCIA<span>100 AÑOS</span></p>
+    <h1>Encuesta de Experiencia de Onboarding</h1>
+    <p class="intro">
+      Bienvenido/a a Providencia. Valoramos tu experiencia y queremos asegurar que tu integración sea lo mejor posible.<br><br>
+      Esta encuesta nos ayuda a entender cómo ha sido tu proceso de integración y dónde podemos mejorar.<br><br>
+      ⏱️ Tiempo: 7-8 minutos &nbsp;·&nbsp; 🔒 Confidencial: Solo verá el área de RH &nbsp;·&nbsp; ✅ Tu honestidad es lo más valioso
+    </p>
+  </header>
+</div>
+</body>
+</html>
