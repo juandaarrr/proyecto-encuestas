@@ -208,6 +208,48 @@
       ⏱️ Tiempo: 7-8 minutos &nbsp;·&nbsp; 🔒 Confidencial: Solo verá el área de RH &nbsp;·&nbsp; ✅ Tu honestidad es lo más valioso
     </p>
   </header>
+
+  <form name="encuesta-onboarding-providencia" method="POST" data-netlify="true" id="encuestaForm">
+    <input type="hidden" name="form-name" value="encuesta-onboarding-providencia">
+    <p style="position:absolute; left:-9999px;">
+      <label>No llenar este campo si eres humano: <input name="bot-field"></label>
+    </p>
+
+    <section class="bloque" id="seccion-1">
+      <h2>Información Básica</h2>
+
+      <div class="pregunta">
+        <label for="nombre">¿Cuál es tu nombre completo?</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+
+      <div class="pregunta">
+        <label for="correo">¿Cuál es tu correo empresarial?</label>
+        <input type="email" id="correo" name="correo" required>
+      </div>
+
+      <div class="pregunta">
+        <label for="departamento">¿En qué departamento o área estás trabajando?</label>
+        <select id="departamento" name="departamento" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="Recursos Humanos">Recursos Humanos</option>
+          <option value="Operaciones">Operaciones</option>
+          <option value="Comercial/Ventas">Comercial/Ventas</option>
+          <option value="Tecnología">Tecnología</option>
+          <option value="Administración">Administración</option>
+          <option value="Servicios al Cliente">Servicios al Cliente</option>
+          <option value="Logística">Logística</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+
+      <div class="pregunta">
+        <label for="fecha_ingreso">¿Cuál es tu fecha de ingreso a Providencia?</label>
+        <input type="date" id="fecha_ingreso" name="fecha_ingreso" required>
+      </div>
+    </section>
+
+  </form>
 </div>
 </body>
 </html>
