@@ -259,7 +259,44 @@
       <div id="contenedor-cultural"></div>
     </section>
 
+    <section class="bloque" id="seccion-4">
+      <h2>Tu Perspectiva Sincera</h2>
+
+      <div class="pregunta">
+        <label for="q17">¿Hay algo sobre la realidad de trabajar en Providencia que te sorprendió (positiva o negativamente) y que es diferente a lo que esperabas?</label>
+        <textarea id="q17" name="q17_sorpresa" rows="3"></textarea>
+      </div>
+
+      <div class="pregunta">
+        <label for="q18">Si tuvieras que decir qué fue lo MÁS DIFÍCIL de tus primeros días en Providencia, ¿cuál ha sido? (puede ser de cualquier tipo: técnico, personal, emocional, administrativo)</label>
+        <textarea id="q18" name="q18_brecha" rows="3"></textarea>
+      </div>
+
+      <div class="pregunta">
+        <label for="q19">¿Cuál ha sido lo MEJOR de tu experiencia en Providencia hasta ahora? (lo que más te ha gustado, lo que más valoras)</label>
+        <textarea id="q19" name="q19_fortaleza" rows="3"></textarea>
+      </div>
+
+      <div class="pregunta">
+        <label for="q20">Si un amigo te preguntara "¿vale la pena trabajar en Providencia?", ¿qué le dirías? Sé honesto.</label>
+        <textarea id="q20" name="q20_recomendacion" rows="3"></textarea>
+      </div>
+    </section>
+
+    <input type="hidden" name="puntuacion_tecnica" id="puntuacion_tecnica" value="">
+    <input type="hidden" name="puntuacion_cultural" id="puntuacion_cultural" value="">
+    <input type="hidden" name="puntuacion_general" id="puntuacion_general" value="">
+
+    <button type="submit" class="boton-enviar">Enviar respuestas</button>
+
   </form>
+
+  <div id="mensajeExito" class="mensaje-estado" hidden>
+    <p>¡Gracias! Tu respuesta fue enviada correctamente.</p>
+  </div>
+  <div id="mensajeError" class="mensaje-estado mensaje-error" hidden>
+    <p>Hubo un problema al enviar tu respuesta. Por favor intenta de nuevo.</p>
+  </div>
 </div>
 
 <script>
