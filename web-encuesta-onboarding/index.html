@@ -299,6 +299,7 @@
   </div>
 </div>
 
+<script src="scoring.js"></script>
 <script>
   const PREGUNTAS_TECNICAS = [
     { id: 'q5', texto: 'Desde que comenzaste, ¿en cuántos días pudiste completar una tarea de tu rol sin necesidad de pedir ayuda?', min: 'Aún no he podido hacerlo solo', max: 'Desde el primer o segundo día' },
@@ -340,6 +341,43 @@
 
   renderEscalas(PREGUNTAS_TECNICAS, 'contenedor-tecnica');
   renderEscalas(PREGUNTAS_CULTURALES, 'contenedor-cultural');
+
+  document.getElementById('encuestaForm').addEventListener('submit', function (evento) {
+    evento.preventDefault();
+
+    const formulario = evento.target;
+    const datosFormulario = new FormData(formulario);
+
+    const respuestasEscala = {};
+    ['q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15', 'q16'].forEach((id) => {
+      respuestasEscala[id] = datosFormulario.get(id);
+    });
+
+    const puntuaciones = calcularPuntuaciones(respuestasEscala);
+    document.getElementById('puntuacion_tecnica').value = puntuaciones.tecnica;
+    document.getElementById('puntuacion_cultural').value = puntuaciones.cultural;
+    document.getElementById('puntuacion_general').value = puntuaciones.general;
+
+    datosFormulario.set('puntuacion_tecnica', puntuaciones.tecnica);
+    datosFormulario.set('puntuacion_cultural', puntuaciones.cultural);
+    datosFormulario.set('puntuacion_general', puntuaciones.general);
+
+    const cuerpo = new URLSearchParams(datosFormulario).toString();
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: cuerpo,
+    })
+      .then(() => {
+        formulario.hidden = true;
+        document.getElementById('mensajeExito').hidden = false;
+        document.getElementById('mensajeError').hidden = true;
+      })
+      .catch(() => {
+        document.getElementById('mensajeError').hidden = false;
+      });
+  });
 </script>
 
 </body>
