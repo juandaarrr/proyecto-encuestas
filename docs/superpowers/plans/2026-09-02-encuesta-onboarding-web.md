@@ -762,11 +762,11 @@ In the Netlify site dashboard: go to "Forms" → enable form detection if not al
 
 - [ ] **Step 4: Live end-to-end test**
 
-Open the live Netlify URL, fill out the entire survey with test data, and submit. Verify:
+Open the live Netlify URL, fill out the entire survey with test data (pick a distinct, memorable value for each of the 12 scale questions, e.g. q5=1, q6=2, q7=3, q8=4, q9=5, q10=1, q11=2, q12=3, q13=4, q14=5, q15=1, q16=2), and submit. Verify:
 - The form disappears and the "¡Gracias! Tu respuesta fue enviada correctamente." message appears without a page reload.
-- Within a few minutes, an email arrives at `Larango@providenciaco.com` containing all submitted answers plus three additional fields: `puntuacion_tecnica`, `puntuacion_cultural`, `puntuacion_general`, each a number between 1 and 5.
+- Within a few minutes, an email arrives at `Larango@providenciaco.com` containing all submitted answers, **including all 12 individual scale fields `q5` through `q16` with the exact test values you entered** (this is the field set the hidden detection form in Task 5/7 exists to preserve — if any of `q5`..`q16` is missing from the email, the Netlify form's static detection markup has drifted out of sync with the real field names and must be fixed before this task is considered done), plus three additional fields: `puntuacion_tecnica`, `puntuacion_cultural`, `puntuacion_general`, each a number between 1 and 5 matching what you'd compute by hand from your test values. Confirm `bot-field` is either absent from the email or empty (not treated as a real answer).
 - Reload the live URL on a phone (or use browser dev tools' device emulation) — layout remains usable, no horizontal scrolling.
-- Toggle the OS/browser dark mode — colors switch to the dark palette defined in Task 1 without any unreadable text.
+- Toggle the OS/browser dark mode — colors switch to the dark palette defined in Task 1 without any unreadable text, and tabbing to a scale chip shows a visible focus ring in both light and dark mode.
 
 - [ ] **Step 5: Record the live URL**
 

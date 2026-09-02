@@ -78,13 +78,24 @@ midiendo).
 
 ## Envío del formulario (Netlify Forms)
 
-- `<form name="encuesta-onboarding-providencia" method="POST" data-netlify="true">` con un input oculto
-  `form-name` (requisito de Netlify) y un honeypot básico anti-spam.
+- El formulario visible (`id="encuestaForm"`) tiene `name="encuesta-onboarding-providencia"`, `method="POST"` y un
+  input oculto `form-name` (requisito de Netlify), pero **no** lleva `data-netlify="true"` — ver el punto siguiente
+  sobre por qué la detección se hace aparte.
+- **Detección de campos**: 12 de los 20 campos (`q5`..`q16`, las escalas 1-5) se generan por JavaScript en tiempo de
+  ejecución (`renderEscalas`), y Netlify detecta el esquema de un formulario analizando el HTML **estático** en el
+  momento del build — nunca vería esos 12 campos si solo el formulario visible tuviera `data-netlify="true"`. Por
+  eso se agrega un segundo `<form>` oculto (`hidden`, sin interacción posible), con el mismo `name`, que sí lleva
+  `data-netlify="true"` y `data-netlify-honeypot="bot-field"`, y que enumera estáticamente los 24 campos reales
+  (incluyendo los 12 de escala) para que Netlify los registre. Este patrón es el recomendado por Netlify para
+  formularios con campos generados dinámicamente.
 - Envío vía `fetch` (POST a `/` con `Content-Type: application/x-www-form-urlencoded`) para evitar recarga de
-  página; al confirmar éxito se reemplaza el formulario por un mensaje de agradecimiento simple.
-- No se usa `mailto:` de respaldo (a diferencia del proyecto BDI): al ser un formulario nativo de Netlify, si JS
-  fallara, el envío normal por POST de HTML sigue funcionando como respaldo (progressive enhancement), sin depender
-  de un servicio externo ni de CSP de terceros.
+  página; se valida `response.ok` antes de mostrar éxito (una respuesta no-2xx se trata como error, no como éxito
+  silencioso). Al confirmar éxito se reemplaza el formulario por un mensaje de agradecimiento simple.
+- No se usa `mailto:` de respaldo (a diferencia del proyecto BDI). A diferencia de lo asumido originalmente, este
+  NO es un respaldo real de "progressive enhancement": si JavaScript fallara, las secciones 2 y 3 (generadas por
+  `renderEscalas`) quedarían vacías, así que un envío sin JS no tendría forma de capturar las 12 respuestas de
+  escala. Se acepta este riesgo porque JavaScript deshabilitado es un escenario extremadamente improbable para el
+  público objetivo (colaboradores de la empresa accediendo desde un enlace corporativo).
 
 ## Manejo de errores y validación
 
