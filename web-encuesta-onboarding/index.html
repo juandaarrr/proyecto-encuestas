@@ -154,6 +154,11 @@
     color: #ffffff;
   }
 
+  .chip:has(input:focus-visible) {
+    outline: 3px solid var(--verde-oscuro);
+    outline-offset: 2px;
+  }
+
   .escala-etiquetas {
     display: flex;
     justify-content: space-between;
@@ -198,6 +203,32 @@
 </style>
 </head>
 <body>
+<form name="encuesta-onboarding-providencia" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+  <input type="text" name="nombre">
+  <input type="email" name="correo">
+  <input type="text" name="departamento">
+  <input type="date" name="fecha_ingreso">
+  <input type="radio" name="q5">
+  <input type="radio" name="q6">
+  <input type="radio" name="q7">
+  <input type="radio" name="q8">
+  <input type="radio" name="q9">
+  <input type="radio" name="q10">
+  <input type="radio" name="q11">
+  <input type="radio" name="q12">
+  <input type="radio" name="q13">
+  <input type="radio" name="q14">
+  <input type="radio" name="q15">
+  <input type="radio" name="q16">
+  <textarea name="q17_sorpresa"></textarea>
+  <textarea name="q18_brecha"></textarea>
+  <textarea name="q19_fortaleza"></textarea>
+  <textarea name="q20_recomendacion"></textarea>
+  <input type="hidden" name="puntuacion_tecnica">
+  <input type="hidden" name="puntuacion_cultural">
+  <input type="hidden" name="puntuacion_general">
+  <input name="bot-field">
+</form>
 <div class="contenedor">
   <header class="encabezado">
     <p class="logo-marca">PROVIDENCIA<span>100 AÑOS</span></p>
@@ -209,7 +240,7 @@
     </p>
   </header>
 
-  <form name="encuesta-onboarding-providencia" method="POST" data-netlify="true" id="encuestaForm">
+  <form name="encuesta-onboarding-providencia" method="POST" id="encuestaForm">
     <input type="hidden" name="form-name" value="encuesta-onboarding-providencia">
     <p style="position:absolute; left:-9999px;">
       <label>No llenar este campo si eres humano: <input name="bot-field"></label>
@@ -369,7 +400,10 @@
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: cuerpo,
     })
-      .then(() => {
+      .then((respuesta) => {
+        if (!respuesta.ok) {
+          throw new Error('Respuesta HTTP ' + respuesta.status);
+        }
         formulario.hidden = true;
         document.getElementById('mensajeExito').hidden = false;
         document.getElementById('mensajeError').hidden = true;
