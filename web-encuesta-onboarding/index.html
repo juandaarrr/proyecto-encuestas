@@ -254,6 +254,11 @@
       <div id="contenedor-tecnica"></div>
     </section>
 
+    <section class="bloque" id="seccion-3">
+      <h2>Tu Experiencia Cultural</h2>
+      <div id="contenedor-cultural"></div>
+    </section>
+
   </form>
 </div>
 
@@ -265,6 +270,15 @@
     { id: 'q8', texto: 'Considerando la capacitación que recibiste en tus primeros días, ¿cuánto te ayudó a sentirte preparado para el rol?', min: 'No fue útil, me dejó confundido', max: 'Muy útil, me preparó perfectamente' },
     { id: 'q9', texto: 'Cuando tuviste dudas o problemas en tu rol, ¿qué tan fácil fue encontrar quién te ayudara y resolver la situación?', min: 'Muy difícil, nadie disponible o no sabían ayudar', max: 'Muy fácil, siempre encontré apoyo rápido' },
     { id: 'q10', texto: 'Hoy, sin consultar a nadie, ¿qué tan confiado te sientes en manejar las situaciones normales de tu trabajo?', min: 'Bajo, sigo dependiendo mucho de otros', max: 'Alto, manejo bien la mayoría de situaciones' },
+  ];
+
+  const PREGUNTAS_CULTURALES = [
+    { id: 'q11', texto: 'Cuando te presentaron los valores y la visión de Providencia en tus primeros días, ¿algo resonó contigo personalmente?', min: 'No, me parecen solo palabras sin significado', max: 'Sí, se alinean bien con mis valores personales' },
+    { id: 'q12', texto: 'Pensando en tu líder directo, ¿qué tan cómodo te sientes siendo honesto sobre tus dudas, miedos o necesidades?', min: 'Nada cómodo, prefiero no expresar mis preocupaciones', max: 'Muy cómodo, puedo ser completamente honesto' },
+    { id: 'q13', texto: 'Pensando en tu equipo de trabajo, ¿cuántos de tus compañeros crees que saben quién eres realmente más allá de tu rol?', min: "Casi nadie, soy el 'nuevo'", max: 'Muchos, ya me conocen como persona' },
+    { id: 'q14', texto: 'En las comunicaciones de la empresa (reuniones, mails, anuncios), ¿te sientes incluido e informado de lo que está pasando?', min: 'No, me entero a último momento o de oídas', max: 'Sí, tengo claridad y soy comunicado primero' },
+    { id: 'q15', texto: '¿Conoces gente en otros departamentos? (no solo de vista, sino lo suficiente como para saludar o pedir un favor)', min: 'No, solo conozco a mi equipo', max: 'Sí, conozco gente de varios departamentos' },
+    { id: 'q16', texto: '¿Te sientes seguro cometiendo errores y aprendiendo de ellos sin miedo a represalias o vergüenza?', min: 'No, es arriesgado fallar aquí', max: 'Sí, el ambiente es seguro para aprender' },
   ];
 
   function renderEscalas(preguntas, contenedorId) {
@@ -288,6 +302,7 @@
   }
 
   renderEscalas(PREGUNTAS_TECNICAS, 'contenedor-tecnica');
+  renderEscalas(PREGUNTAS_CULTURALES, 'contenedor-cultural');
 </script>
 
 </body>
